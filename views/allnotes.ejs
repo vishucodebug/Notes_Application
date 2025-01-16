@@ -1,0 +1,105 @@
+<%- include("includes/head.ejs"); %>
+    <title>All Notes</title>
+
+<body>
+    <% if(success  && success.length){ %>
+        <div class="alert alert-success col-6 offset-3 mt-3 alert-dismissible fade show" "  role="alert">
+            <p class="mb-0" > <strong><%= success %></strong></p>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <% } %>
+
+    <% if(success1 && success1.length){ %>
+        <div class="alert alert-success col-6 offset-3 mt-3 alert-dismissible fade show" "  role="alert">
+            <p class="mb-0" > <strong><%= success1 %></strong> </p>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <% } %>
+    
+    <% if(success2 && success2.length){ %>
+        <div class="alert alert-success col-6 offset-3 mt-3 alert-dismissible fade show"   role="alert">
+            <p class="mb-0" ><strong> <%= success2 %></strong></p>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <% } %>
+    <% if(err && err.length){ %>
+        <div class="alert alert-success col-6 offset-3 mt-3 alert-dismissible fade show"   role="alert">
+            <p class="mb-0" ><strong> <%= err %></strong></p>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+    <% } %>
+    
+    
+
+
+    <div class="allnotes">
+        
+        <div class="newnotes">
+           
+                <form method="post" action="/notes">
+                 <div class="input"  >
+                        <div class="in mb-2">
+                             <input type="text" class="form-control " name="username" placeholder="Enter Username" required/> 
+                        </div>
+                        <div class="in mb-2">
+                            <input type="text" class="form-control " name="topic" placeholder="Enter Topic.........." required/>
+                        </div> 
+                    </div>
+                        <div class="mt-2" >
+                             <textarea name="content" class="form-control " style="height: 5rem;" placeholder="Enter your Note.........." required></textarea>
+                        </div>
+                            <button class="btn btn-primary m-0 mt-3 w-25 p-2">Add notes.</button>
+                </form>         
+        </div>
+        <div class="shownotes"> 
+            <nav class="navbar justify-content-center ">
+                <form class="form-inline" method="post" action="/notes/search">
+                  <div class="search">
+                    <div>
+                        <input class="form-control mr-sm-2" name="search" type="text" placeholder="Search" required >
+                      </div>
+                      <div>
+                        <button class="btn btn-outline-success my-2 my-sm-0 searchbtn" type="submit">Search</button>
+                      </div>
+                  </div>
+                </form>
+              </nav>       
+              
+
+
+
+                    <% for(let notes of notesData) {%>
+                    <div class="card border-warning mb-4">
+                            <div>
+                                 <h5 class="card-header fs-6 ">@<%=notes.username%>
+                                    <div class="btns">
+                                       <div>
+                                           <form method="get" action="/notes/<%=notes.id%>/edit">
+                                                <button class="btn btn-primary p-1 ">Edit</button>
+                                            </form>
+                                        </div>
+                                        <div>
+                                            <form method="post" action="/notes/<%=notes.id%>/?_method=DELETE">
+                                                <button class="btn btn-danger p-1 ">Delete</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </h5>
+                               </div>
+                            
+                            <div class="card-body">
+                              <h5 class="card-title "><%=notes.topic%></h5>
+                              <p class="card-text"><%=notes.content%></p>
+                            </div>
+                          </div>
+                    <% } %>
+                </div>    
+        </div>
+    </div>
+    
+</body>
+</html>
+
+
+
+

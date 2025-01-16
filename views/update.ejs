@@ -1,0 +1,28 @@
+<%- include("includes/head.ejs"); %>
+    <title>Edit Notes</title>
+
+<body>
+   
+    <div class="UpdateCard">
+        <h2>Edit your notes</h2>
+        <h3> Username : @<i><u><%=notesData.username%></u></i></h3>
+        <form method="post" action="/notes/<%=notesData.id%>/?_method=PATCH">
+            <div class="innerUpdate">
+                <div class="in mb-2">
+                    Topic :
+                    <input type="text" class="form-control " name="topic" placeholder="enter topic" value=" <%=notesData.topic%> " required>
+               </div>
+                <div class="mt-2" >
+                    Content :
+                    <textarea name="content" class="form-control " style="height: 5rem;" placeholder="Enter your Note.........." required> <%=notesData.content%></textarea>
+               </div>
+                <button class="btn btn-primary m-0 mt-3 w-25 p-2 " id="updatebtn">Update notes.</button>
+            </div>
+            
+        </form>
+ </div>
+
+
+          
+</body>
+</html>

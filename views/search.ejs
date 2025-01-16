@@ -1,0 +1,40 @@
+<%- include("includes/head.ejs"); %>
+<title>All Notes</title>
+
+<body>
+  <div class="allnotes">
+    <h2>All notes</h2>
+    <div class="newnotes">
+      <% for(let search of searchData) {%>
+
+      <div class="card border-warning mb-4">
+        <div>
+          <h5 class="card-header fs-6">
+            @<%=search.username%>
+            <div class="btns">
+              <div>
+                <form method="get" action="/notes/search/<%=search.id%>/edit">
+                  <button class="btn btn-primary p-1">Edit</button>
+                </form>
+              </div>
+              <div>
+                <form
+                  method="post"
+                  action="/notes/search/<%=search.id%>/?_method=DELETE"
+                >
+                  <button class="btn btn-danger p-1">Delete</button>
+                </form>
+              </div>
+            </div>
+          </h5>
+        </div>
+
+        <div class="card-body">
+          <h5 class="card-title"><%=search.topic%></h5>
+          <p class="card-text"><%=search.content%></p>
+        </div>
+      </div>
+      <% } %>
+    </div>
+  </div>
+</body>
