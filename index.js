@@ -101,7 +101,7 @@ app.get("/notes", (req, res) => {
     });
   } catch (err) {
     console.log(err);
-    res.send("Some error in db");
+    res.send("Database access limit reached...");
   }
 });
 
@@ -125,7 +125,7 @@ app.post("/notes/search", (req, res) => {
   } catch (err) {
     console.log(err);
 
-    res.send("Some error in db");
+    res.send("Database access limit reached...");
   }
 });
 
@@ -142,7 +142,7 @@ app.get("/notes/:id/edit", (req, res) => {
     });
   } catch (err) {
     console.log(err);
-    res.send("Some error in db");
+    res.send("Database access limit reached...");
   }
 });
 
@@ -161,7 +161,7 @@ app.patch("/notes/:id", (req, res) => {
     });
   } catch (err) {
     consolelog(err);
-    res.send("Some error in db");
+    res.send("Database access limit reached...");
   }
 });
 
@@ -177,7 +177,7 @@ app.get("/notes/search/:id/edit", (req, res) => {
     });
   } catch (err) {
     console.log(err);
-    res.send("Some error in db");
+    res.send("Database access limit reached...");
   }
 });
 
@@ -195,7 +195,7 @@ app.patch("/notes/search/:id", (req, res) => {
     });
   } catch (err) {
     console.log(err);
-    res.send("Some error in db");
+    res.send("Database access limit reached...");
   }
 });
 
@@ -212,7 +212,7 @@ app.delete("/notes/:id", (req, res) => {
     });
   } catch (err) {
     console.log(err);
-    res.send("Some error in db");
+    res.send("Database access limit reached...");
   }
 });
 
@@ -229,7 +229,7 @@ app.delete("/notes/search/:id", (req, res) => {
     });
   } catch (err) {
     console.log(err);
-    res.send("Some error in db");
+    res.send("Database access limit reached...");
   }
 });
 
