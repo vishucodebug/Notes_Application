@@ -84,7 +84,7 @@ app.post("/notes", (req, res) => {
     });
   } catch (err) {
     console.log(err);
-    res.send("Some error in db");
+    res.send("Database access limit reached...");
   }
 });
 
